@@ -1,11 +1,12 @@
-package com.mayflower.elements;
+package com.testtask.elements;
 
-import com.mayflower.utils.LoggerUtil;
+import com.testtask.utils.LoggerUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class TextField extends BaseElement {
+
     private String name;
 
     public TextField(WebDriver driver, By locator, String name) {
@@ -13,10 +14,10 @@ public class TextField extends BaseElement {
         this.name = name;
     }
 
-    public void sendKeysViaJs(String text){
+    public void sendKeysViaJs(String text) {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         String escapedText = escapeJavaScript(text);
-        String script = "arguments[0].value = '" + escapedText + "';";
+        String script = "window.editor.setValue('" + escapedText + "');";
         jsExecutor.executeScript(script, element);
         LoggerUtil.info(text + " entered to the " + name + " text field");
     }
@@ -32,4 +33,5 @@ public class TextField extends BaseElement {
                 .replace("\f", "\\f");
         return input;
     }
+
 }

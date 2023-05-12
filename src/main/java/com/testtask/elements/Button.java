@@ -1,5 +1,6 @@
-package com.mayflower.elements;
+package com.testtask.elements;
 
+import com.testtask.utils.LoggerUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,6 +16,7 @@ public class Button extends BaseElement {
 
     public void click() {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-        System.out.println("Button '" + name + "' clicked.");
+        LoggerUtil.info("Button '" + name + "' clicked.");
     }
+
 }
