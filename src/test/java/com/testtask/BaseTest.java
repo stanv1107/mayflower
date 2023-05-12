@@ -1,5 +1,6 @@
 package com.testtask;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +13,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "src/driver/chromedriver");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all");
         customersPage = new CustomersPage(driver);
